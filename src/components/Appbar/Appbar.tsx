@@ -7,21 +7,26 @@ import React from 'react';
 interface Props {
     handleDrawerToggle: () => void;
     onThemeChange: () => void;
+    isDarkMode: boolean;
+    isDrawerOpen: boolean;
 }
 
-export const Appbar: React.FC<Props> = ({handleDrawerToggle, onThemeChange}): JSX.Element => {
+export const Appbar: React.FC<Props> = ({handleDrawerToggle, onThemeChange, isDarkMode, isDrawerOpen}): JSX.Element => {
   return (
     <div>
       <AppBar position="static" variant="elevation">
         <Toolbar variant="dense">
-            <IconButton color="inherit" onClick={handleDrawerToggle} edge="start">
+            <IconButton color="inherit" onClick={handleDrawerToggle} edge="start"
+            sx={{mr: 2, ...(isDrawerOpen && {display: "none"})}}>
                 <MenuIcon />
             </IconButton>
             
             <Typography variant="subtitle1" component="div">
                 Trading Application
             </Typography>
-            <ThemeSwitch size='small' onChange={onThemeChange} />
+            {isDarkMode ? <DarkModeIcon/> : null}
+            <ThemeSwitch size='small' color='default' onChange={onThemeChange} />
+        {isDarkMode ? <LightModeIcon/> : null}
         </Toolbar>
       </AppBar>
     </div>

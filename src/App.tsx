@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { createTheme, CssBaseline, ThemeProvider} from "@mui/material";
-import{ Appbar} from './components';
+import{ Appbar, Sidebar} from './components';
 
 export const App: React.FC = (): JSX.Element => {
    const [themeMode, setThemeMode] = useState<"light" | "dark">("dark");
+   const [sideBarToggle, setSideBarToggle] = useState<boolean>(false)
 
    const theme = createTheme({
     palette: {
@@ -15,18 +16,24 @@ export const App: React.FC = (): JSX.Element => {
    })
 
    const handleDrawerToggle = React.useCallback(() => {
-
-   }, []);
+      setSideBarToggle(!sideBarToggle)
+   }, [sideBarToggle]);
 
    const onThemeChange = React.useCallback(() => {
-
-   }, []);
+       setThemeMode(themeMode === "dark" ? "light" : "dark")
+   }, [themeMode]);
 
    return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Appbar handleDrawerToggle={handleDrawerToggle} onThemeChange={onThemeChange}/>
+      <Appbar handleDrawerToggle={handleDrawerToggle} 
+      onThemeChange={onThemeChange}
+      isDarkMode={themeMode === "dark"}
+      isDrawerOpen={sideBarToggle}
+    />
+      <Sidebar isOpen={sideBarToggle} handleDrawerToggle={handleDrawerToggle} isDrawerOpen={false}/>
     </ThemeProvider>
    )
 }
+export default App;
 
