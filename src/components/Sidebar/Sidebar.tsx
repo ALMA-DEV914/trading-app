@@ -31,7 +31,7 @@ export const Sidebar: React.FC<Props> = ({isOpen, isDrawerOpen, handleDrawerTogg
     const theme = useTheme();
 
   return (
-    <div>
+    <>
       <Drawer sx ={{
         width: DRAWER_WIDTH,
         flexShrink: 0,
@@ -55,7 +55,7 @@ export const Sidebar: React.FC<Props> = ({isOpen, isDrawerOpen, handleDrawerTogg
          </IconButton>
        </DrawerHeader>
       </Drawer>
-    </div>
+    </>
   )
 }
 

@@ -26,7 +26,7 @@ export const Appbar: React.FC<Props> = ({handleDrawerToggle, onThemeChange, isDa
             </Typography>
             {isDarkMode ? <DarkModeIcon/> : null}
             <ThemeSwitch size='small' color='default' onChange={onThemeChange} />
-        {isDarkMode ? <LightModeIcon/> : null}
+              {isDarkMode ? <LightModeIcon/> : null}
         </Toolbar>
       </AppBar>
     </div>
