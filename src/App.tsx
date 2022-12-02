@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { createTheme, CssBaseline, TextField, ThemeProvider} from "@mui/material";
+import { createTheme, CssBaseline, ThemeProvider} from "@mui/material";
+import{ Appbar} from './components';
 
 export const App: React.FC = (): JSX.Element => {
    const [themeMode, setThemeMode] = useState<"light" | "dark">("dark");
@@ -12,12 +13,19 @@ export const App: React.FC = (): JSX.Element => {
       fontSize: 14,
     },
    })
+
+   const handleDrawerToggle = React.useCallback(() => {
+
+   }, []);
+
+   const onThemeChange = React.useCallback(() => {
+
+   }, []);
+
    return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div>
-        <TextField value="almabraun" />
-      </div>
+      <Appbar handleDrawerToggle={handleDrawerToggle} onThemeChange={onThemeChange}/>
     </ThemeProvider>
    )
 }
