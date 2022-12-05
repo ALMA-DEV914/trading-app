@@ -23,11 +23,12 @@ interface Props{
     isOpen: boolean;
     isDrawerOpen: boolean;
     handleDrawerToggle: () => void;
+    children: any
 }
 
 const DRAWER_WIDTH = 240;
 
-export const Sidebar: React.FC<Props> = ({isOpen, isDrawerOpen, handleDrawerToggle}): JSX.Element => {
+export const Sidebar: React.FC<Props> = ({isOpen, children, isDrawerOpen, handleDrawerToggle}): JSX.Element => {
     const theme = useTheme();
 
   return (
@@ -54,9 +55,10 @@ export const Sidebar: React.FC<Props> = ({isOpen, isDrawerOpen, handleDrawerTogg
             )}
          </IconButton>
        </DrawerHeader>
+       <Divider />
+       { children }
       </Drawer>
     </>
   )
 }
 
-export default Sidebar

@@ -3,6 +3,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon  from '@mui/icons-material/LightMode';
 import React from 'react';
+import "./Appbar.css"
 
 interface Props {
     handleDrawerToggle: () => void;
@@ -15,7 +16,8 @@ export const Appbar: React.FC<Props> = ({handleDrawerToggle, onThemeChange, isDa
   return (
     <div>
       <AppBar position="static" variant="elevation">
-        <Toolbar variant="dense">
+        <Toolbar className='toolbar'>
+            <div className='toolbar-item'>
             <IconButton color="inherit" onClick={handleDrawerToggle} edge="start"
             sx={{mr: 2, ...(isDrawerOpen && {display: "none"})}}>
                 <MenuIcon />
@@ -24,9 +26,12 @@ export const Appbar: React.FC<Props> = ({handleDrawerToggle, onThemeChange, isDa
             <Typography variant="subtitle1" component="div">
                 Trading Application
             </Typography>
+            </div>
+            <div className='toolbar-item'>
             {isDarkMode ? <DarkModeIcon/> : null}
-            <ThemeSwitch size='small' color='default' onChange={onThemeChange} />
+            <ThemeSwitch size='small' color='default' className='switch' onChange={onThemeChange} />
               {isDarkMode ? <LightModeIcon/> : null}
+            </div>  
         </Toolbar>
       </AppBar>
     </div>

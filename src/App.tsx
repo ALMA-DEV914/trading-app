@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createTheme, CssBaseline, ThemeProvider} from "@mui/material";
-import{ Appbar, Sidebar} from './components';
+import{ Appbar, Sidebar, Menu} from './components';
+import { ROUTES } from './routes';
 
 export const App: React.FC = (): JSX.Element => {
    const [themeMode, setThemeMode] = useState<"light" | "dark">("dark");
@@ -31,7 +32,7 @@ export const App: React.FC = (): JSX.Element => {
       isDarkMode={themeMode === "dark"}
       isDrawerOpen={sideBarToggle}
     />
-      <Sidebar isOpen={sideBarToggle} handleDrawerToggle={handleDrawerToggle} isDrawerOpen={false}/>
+      <Sidebar isOpen={sideBarToggle} handleDrawerToggle={handleDrawerToggle} isDrawerOpen={false} children={<Menu links={ROUTES}/>} />
     </ThemeProvider>
    )
 }
